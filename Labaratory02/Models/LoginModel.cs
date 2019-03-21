@@ -1,7 +1,10 @@
 ﻿using System;
+using System.CodeDom;
 using System.Net.Mail;
 using System.Windows;
+using Labaratory02.Exceptions;
 using Labaratory02.Managers;
+using Labaratory02.ViewModels;
 
 namespace Labaratory02.Models
 {
@@ -9,59 +12,62 @@ namespace Labaratory02.Models
     {
 
         private Person _person;
+        private LoginViewModel _loginViewModel;
         private readonly DateTime _periodFrom;
 
 
-        public LoginModel(Person person)
+        public LoginModel(Person person , LoginViewModel loginViewModel)
         {
             _person = person;
-
+            _loginViewModel = loginViewModel;
             _periodFrom = new DateTime(DateTime.Now.Year - 135, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
         }
 
-        public bool CheckInput(string firstName, string secondName, string email, DateTime bornDateTime)
+        public bool ValidateInput(string firstName, string secondName, string email, DateTime bornDateTime)
         {
-            
 
-            if (!ValidDate(bornDateTime))
+            try
             {
-                MessageBox.Show("The date is invalid");
+                ValidateDate(bornDateTime); 
+                ValidateEmail(email);
+  
+                _person = new Person(firstName, secondName, email, bornDateTime);
+
+                NavigationManager.Instance.LoadResult(_person);
+                NavigationManager.Instance.Navigate(ModesEnum.Result);
+
+                if (_person.IsBirthday)
+                    MessageBox.Show("Happy Birthday!!!");
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                _loginViewModel.ShowInvalidInputMessage(e);
                 return false;
             }
 
-            if (!ValidEmail(email))
-            {
-                MessageBox.Show("The email is invalid");
-                return false;
-            }
-
-            _person = new Person(firstName, secondName, email, bornDateTime);
-
-            NavigationManager.Instance.LoadResult(_person);
-            NavigationManager.Instance.Navigate(ModesEnum.Result);
-
-            if (_person.IsBirthday)
-                MessageBox.Show("Happy Birthday!!!");
-
-            return true;
         }
 
-        private bool ValidDate(DateTime date)
+        private void ValidateDate(DateTime date)
         {
-            return date > _periodFrom && date <= DateTime.Now;
+            if (date <= _periodFrom) throw new InvalidAgeException();
+
+            if (date > DateTime.Now) throw new InvalidDateException();
+
         }
 
-        private bool ValidEmail(string email)
+        private void ValidateEmail(string email)
         {
             try
             {
                 MailAddress m = new MailAddress(email);
 
-                return true;
             }
             catch (FormatException)
             {
-                return false;
+                throw new InvalidEmailException();
+    
             }
         }
     }

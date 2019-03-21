@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using Labaratory02.Models;
 using Labaratory02.Tools;
@@ -42,8 +43,14 @@ namespace Labaratory02.ViewModels
 
         public LoginViewModel(Person person)
         {
-            LoginModel = new LoginModel(person);
+            LoginModel = new LoginModel(person ,this);
         }
+
+        public void ShowInvalidInputMessage(Exception exception)
+        {
+            MessageBox.Show(exception.Message);
+        }
+
 
         public ICommand ConfirmCommand
         {
@@ -61,7 +68,7 @@ namespace Labaratory02.ViewModels
 
         private void StartExecute(object obj)
         {
-            LoginModel.CheckInput(SelectedName , SelectedSurname , SelectedEmail, SelectedDate);
+            LoginModel.ValidateInput(SelectedName , SelectedSurname , SelectedEmail, SelectedDate);
         }
 
         private bool StartCanExecute(object obj)

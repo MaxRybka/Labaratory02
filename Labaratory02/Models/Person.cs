@@ -1,4 +1,6 @@
 ﻿using System;
+using Labaratory02.Resources;
+using Labaratory02.Tools;
 
 namespace Labaratory02.Models
 {
@@ -11,37 +13,7 @@ namespace Labaratory02.Models
         public readonly bool IsAdult, IsBirthday;
         public readonly string ChineseSign , SunSign;
 
-        private enum ChineseSigns
-        {
-            Monkey = 1,
-            Rooster,
-            Dog,
-            Pig,
-            Rat,
-            Ram,
-            Tiger,
-            Rabbit,
-            Dragon,
-            Sneak,
-            Horse,
-            Ox
-        }
-
-        private enum SunSigns
-        {
-            Capricorn,
-            Aquarius,
-            Pisces,
-            Aries,
-            Taurus,
-            Gemini,
-            Cancer,
-            Leo,
-            Virgo,
-            Libra,
-            Scorpio,
-            Sagittarius
-        }
+        
 
         public Person(){}
 
@@ -95,7 +67,7 @@ namespace Labaratory02.Models
 
         private string CalculateChineseSign(DateTime dateOfBirth)
         {
-            return ((ChineseSigns)(dateOfBirth.Date.Year % 12)).ToString("G");
+            return ((ChineseSigns)(dateOfBirth.Date.Year % 12)).GetDescription();
         }
         
         private string CalculateSunSign(DateTime dateOfBirth)
@@ -103,29 +75,29 @@ namespace Labaratory02.Models
             switch (dateOfBirth.Date.Month)
             {
                 case 1:
-                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Capricorn.ToString() : SunSigns.Aquarius.ToString();
+                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Capricorn.GetDescription() : SunSigns.Aquarius.GetDescription();
                 case 2:
-                    return (dateOfBirth.Date.Day <= 19) ? SunSigns.Aquarius.ToString() : SunSigns.Pisces.ToString();
+                    return (dateOfBirth.Date.Day <= 19) ? SunSigns.Aquarius.GetDescription() : SunSigns.Pisces.GetDescription();
                 case 3:
-                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Pisces.ToString() : SunSigns.Aries.ToString();
+                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Pisces.GetDescription() : SunSigns.Aries.GetDescription();
                 case 4:
-                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Aries.ToString() : SunSigns.Taurus.ToString();
+                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Aries.GetDescription() : SunSigns.Taurus.GetDescription();
                 case 5:
-                    return (dateOfBirth.Date.Day <= 21) ? SunSigns.Taurus.ToString() : SunSigns.Gemini.ToString();
+                    return (dateOfBirth.Date.Day <= 21) ? SunSigns.Taurus.GetDescription() : SunSigns.Gemini.GetDescription();
                 case 6:
-                    return (dateOfBirth.Date.Day <= 21) ? SunSigns.Gemini.ToString() : SunSigns.Cancer.ToString();
+                    return (dateOfBirth.Date.Day <= 21) ? SunSigns.Gemini.GetDescription() : SunSigns.Cancer.GetDescription();
                 case 7:
-                    return (dateOfBirth.Date.Day <= 22) ? SunSigns.Cancer.ToString() : SunSigns.Leo.ToString();
+                    return (dateOfBirth.Date.Day <= 22) ? SunSigns.Cancer.GetDescription() : SunSigns.Leo.GetDescription();
                 case 8:
-                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Leo.ToString() : SunSigns.Virgo.ToString();
+                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Leo.GetDescription() : SunSigns.Virgo.GetDescription();
                 case 9:
-                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Virgo.ToString() : SunSigns.Libra.ToString();
+                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Virgo.GetDescription() : SunSigns.Libra.GetDescription();
                 case 10:
-                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Libra.ToString() : SunSigns.Scorpio.ToString();
+                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Libra.GetDescription() : SunSigns.Scorpio.GetDescription();
                 case 11:
-                    return (dateOfBirth.Date.Day <= 22) ? SunSigns.Scorpio.ToString() : SunSigns.Sagittarius.ToString();
+                    return (dateOfBirth.Date.Day <= 22) ? SunSigns.Scorpio.GetDescription() : SunSigns.Sagittarius.GetDescription();
                 case 12:
-                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Sagittarius.ToString() : SunSigns.Capricorn.ToString();
+                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Sagittarius.GetDescription() : SunSigns.Capricorn.GetDescription();
                 default:
                     return String.Empty;
             }
