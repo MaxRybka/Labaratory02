@@ -27,23 +27,17 @@ namespace Labaratory02.Models
         {
             
 
-            if (bornDateTime <= _periodFrom)
-            {
-                MessageBox.Show("The date is invalid");
-                return false;
-            }
-            if (bornDateTime > DateTime.Now)
+            if (!ValidDate(bornDateTime))
             {
                 MessageBox.Show("The date is invalid");
                 return false;
             }
 
-            if (!CheckEmail(email))
+            if (!ValidEmail(email))
             {
                 MessageBox.Show("The email is invalid");
                 return false;
             }
-
 
             _person = new Person(firstName, secondName, email, bornDateTime);
 
@@ -56,7 +50,12 @@ namespace Labaratory02.Models
             return true;
         }
 
-        private bool CheckEmail(string email)
+        private bool ValidDate(DateTime date)
+        {
+            return date > _periodFrom && date <= DateTime.Now;
+        }
+
+        private bool ValidEmail(string email)
         {
             try
             {

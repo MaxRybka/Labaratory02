@@ -94,25 +94,41 @@ namespace Labaratory02.Models
             return age;
         }
 
-        private string CalculateChineseSign(DateTime dateOfBirth) { return ((ChineseSigns)(dateOfBirth.Date.Year % 12)).ToString("G");}
+        private string CalculateChineseSign(DateTime dateOfBirth)
+        {
+            return ((ChineseSigns)(dateOfBirth.Date.Year % 12)).ToString("G");
+        }
         
         private string CalculateSunSign(DateTime dateOfBirth)
         {
             switch (dateOfBirth.Date.Month)
             {
-                case 1: return (dateOfBirth.Date.Day <= 20) ? SunSigns.Capricorn.ToString() : SunSigns.Aquarius.ToString();
-                case 2: return (dateOfBirth.Date.Day <= 19) ? SunSigns.Aquarius.ToString() : SunSigns.Pisces.ToString();
-                case 3: return (dateOfBirth.Date.Day <= 20) ? SunSigns.Pisces.ToString() : SunSigns.Aries.ToString();
-                case 4: return (dateOfBirth.Date.Day <= 20) ? SunSigns.Aries.ToString() : SunSigns.Taurus.ToString();
-                case 5: return (dateOfBirth.Date.Day <= 21) ? SunSigns.Taurus.ToString() : SunSigns.Gemini.ToString();
-                case 6: return (dateOfBirth.Date.Day <= 21) ? SunSigns.Gemini.ToString() : SunSigns.Cancer.ToString();
-                case 7: return (dateOfBirth.Date.Day <= 22) ? SunSigns.Cancer.ToString() : SunSigns.Leo.ToString();
-                case 8: return (dateOfBirth.Date.Day <= 23) ? SunSigns.Leo.ToString() : SunSigns.Virgo.ToString();
-                case 9: return (dateOfBirth.Date.Day <= 23) ? SunSigns.Virgo.ToString() : SunSigns.Libra.ToString();
-                case 10: return (dateOfBirth.Date.Day <= 23) ? SunSigns.Libra.ToString() : SunSigns.Scorpio.ToString();
-                case 11: return (dateOfBirth.Date.Day <= 22) ? SunSigns.Scorpio.ToString() : SunSigns.Sagittarius.ToString();
-                case 12: return (dateOfBirth.Date.Day <= 23) ? SunSigns.Sagittarius.ToString() : SunSigns.Capricorn.ToString();
-                default: return String.Empty;
+                case 1:
+                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Capricorn.ToString() : SunSigns.Aquarius.ToString();
+                case 2:
+                    return (dateOfBirth.Date.Day <= 19) ? SunSigns.Aquarius.ToString() : SunSigns.Pisces.ToString();
+                case 3:
+                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Pisces.ToString() : SunSigns.Aries.ToString();
+                case 4:
+                    return (dateOfBirth.Date.Day <= 20) ? SunSigns.Aries.ToString() : SunSigns.Taurus.ToString();
+                case 5:
+                    return (dateOfBirth.Date.Day <= 21) ? SunSigns.Taurus.ToString() : SunSigns.Gemini.ToString();
+                case 6:
+                    return (dateOfBirth.Date.Day <= 21) ? SunSigns.Gemini.ToString() : SunSigns.Cancer.ToString();
+                case 7:
+                    return (dateOfBirth.Date.Day <= 22) ? SunSigns.Cancer.ToString() : SunSigns.Leo.ToString();
+                case 8:
+                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Leo.ToString() : SunSigns.Virgo.ToString();
+                case 9:
+                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Virgo.ToString() : SunSigns.Libra.ToString();
+                case 10:
+                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Libra.ToString() : SunSigns.Scorpio.ToString();
+                case 11:
+                    return (dateOfBirth.Date.Day <= 22) ? SunSigns.Scorpio.ToString() : SunSigns.Sagittarius.ToString();
+                case 12:
+                    return (dateOfBirth.Date.Day <= 23) ? SunSigns.Sagittarius.ToString() : SunSigns.Capricorn.ToString();
+                default:
+                    return String.Empty;
             }
 
         }

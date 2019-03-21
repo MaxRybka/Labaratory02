@@ -12,7 +12,7 @@ namespace Labaratory02.ViewModels
         public readonly ResultModel Model;
 
         private string _name = String.Empty, _surname = String.Empty, _email = String.Empty , _sunSign = String.Empty , _chineseSign = String.Empty;
-        private bool _isAdult = false , _isBirthday = false;
+        private bool _isAdult , _isBirthday ;
         private DateTime _bornDate;
 
         private ICommand _backCommand;
