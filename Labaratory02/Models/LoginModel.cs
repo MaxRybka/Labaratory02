@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Net.Mail;
 using System.Windows;
 using Labaratory02.Exceptions;
