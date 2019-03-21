@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -37,6 +38,13 @@ namespace Labaratory02.Models
                 return false;
             }
 
+            if (!CheckEmail(email))
+            {
+                MessageBox.Show("The email is invalid");
+                return false;
+            }
+
+
             _person = new Person(firstName, secondName, email, bornDateTime);
 
             NavigationManager.Instance.LoadResult(_person);
@@ -48,5 +56,20 @@ namespace Labaratory02.Models
             return true;
         }
 
+        private bool CheckEmail(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
     }
+
+    
 }
