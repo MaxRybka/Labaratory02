@@ -28,7 +28,7 @@ namespace Labaratory02.Views
         public void ChangeInfo(Person person)
         {
             InitializeComponent();
-            _resultViewModel = new ResultViewModel(person);//For some reason _resultViewModel.ChangePersonInfo(person) didn't change text blocks
+            _resultViewModel.ChangePersonInfo(person);//For some reason _resultViewModel.ChangePersonInfo(person) don't change the text blocks
             DataContext = _resultViewModel;
         }
 

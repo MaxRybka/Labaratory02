@@ -71,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Exceptions\InvalidEmailException.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NavigationModel.cs" />

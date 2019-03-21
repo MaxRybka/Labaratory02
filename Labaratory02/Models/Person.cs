@@ -1,5 +1,4 @@
 ﻿using System;
-using Labaratory02.Models;
 
 namespace Labaratory02.Models
 {

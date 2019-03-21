@@ -61,7 +61,7 @@ namespace Labaratory02.ViewModels
 
         private void StartExecute(object obj)
         {
-            LoginModel.CheckDate(SelectedName , SelectedSurname , SelectedEmail, SelectedDate);
+            LoginModel.CheckInput(SelectedName , SelectedSurname , SelectedEmail, SelectedDate);
         }
 
         private bool StartCanExecute(object obj)

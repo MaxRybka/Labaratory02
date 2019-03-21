@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Labaratory02.Managers;
 
@@ -23,7 +19,7 @@ namespace Labaratory02.Models
             _periodFrom = new DateTime(DateTime.Now.Year - 135, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
         }
 
-        public bool CheckDate(string firstName, string secondName, string email, DateTime bornDateTime)
+        public bool CheckInput(string firstName, string secondName, string email, DateTime bornDateTime)
         {
             
 

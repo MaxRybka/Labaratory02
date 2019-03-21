@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Input;
 using Labaratory02.Models;
 using Labaratory02.Tools;
-using Labaratory02.Views;
 
 namespace Labaratory02.ViewModels
 {
@@ -19,8 +17,8 @@ namespace Labaratory02.ViewModels
 
         public ResultViewModel(Person person)
         {
-            ChangePersonInfo(person);
             Model = new ResultModel(person);
+            ChangePersonInfo(person);
         }
 
         public void ChangePersonInfo(Person person)
@@ -33,55 +31,85 @@ namespace Labaratory02.ViewModels
             IsAdult = person.IsAdult;
             SunSign = person.SunSign;
             ChineseSign = person.ChineseSign;
-            IsBirthday = person.IsBirthday;
+            IsBirthday = person.IsBirthday; 
         }
 
         public DateTime BornDate
         {
             get { return _bornDate; }
-            set { ChangeAndNotify(ref _bornDate, value, () => BornDate); }
+            set
+            {
+                _bornDate = value;
+                OnPropertyChanged("BornDate");
+            }
         }
 
         public string Name
         {
             get { return _name; }
-            set { ChangeAndNotify(ref _name, value, () => Name); }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
         }
 
         public string Surname
         {
             get { return _surname; }
-            set { ChangeAndNotify(ref _surname, value, () => Surname); }
+            set
+            {
+                _surname = value;
+                OnPropertyChanged("Surname");
+            }
         }
 
         public string Email
         {
             get { return _email; }
-            set { ChangeAndNotify(ref _email, value, () => Email); }
+            set {
+                _email = value;
+                OnPropertyChanged("Email");
+            }
         }
 
         public bool IsAdult
         {
             get { return _isAdult; }
-            set { ChangeAndNotify(ref _isAdult, value, () => IsAdult); }
+            set
+            {
+                _isAdult = value;
+                OnPropertyChanged("IsAdult");
+            }
         }
 
         public string SunSign
         {
             get { return _sunSign; }
-            set { ChangeAndNotify(ref _sunSign, value, () => SunSign); }
+            set
+            {
+                _sunSign = value;
+                OnPropertyChanged("SunSign");
+            }
         }
 
         public string ChineseSign
         {
             get { return _chineseSign; }
-            set { ChangeAndNotify(ref _chineseSign, value, () => ChineseSign); }
+            set
+            {
+                _chineseSign = value;
+                OnPropertyChanged("ChineseSign");
+            }
         }
 
         public bool IsBirthday
         {
             get { return _isBirthday; }
-            set { ChangeAndNotify(ref _isBirthday, value, () => IsBirthday); }
+            set {
+                _isBirthday = value;
+                OnPropertyChanged("IsBirthday");
+            }
         }
 
         public ICommand BackCommand

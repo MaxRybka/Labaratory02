@@ -16,7 +16,9 @@ namespace Labaratory02.Tools
             {
                 throw new ArgumentNullException("memberExpression");
             }
+
             var body = memberExpression.Body as MemberExpression;
+
             if (body == null)
             {
                 throw new ArgumentException("Lambda must return a property.");
